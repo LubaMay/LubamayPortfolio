@@ -5,3 +5,4 @@ module Placeholder
     "http://placehold.it/#{height}x#{width}"
   end
 end
+
