@@ -5,7 +5,7 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all
+    @blogs = Blog.special_blogs
     @page_title = "My Portfolio Blog"
   end
 
@@ -29,7 +29,10 @@ class BlogsController < ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
-    @blog = Blog.new(blog_params)
+
+    bp = blog_params
+    #bp[:topic_id] = Topic.last.id
+    @blog = Blog.new(bp)
 
     respond_to do |format|
       if @blog.save
@@ -79,6 +82,6 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :body)
+      params.require(:blog).permit(:title, :body, :topic_id)
     end
 end
