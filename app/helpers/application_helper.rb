@@ -15,6 +15,10 @@ module ApplicationHelper
        content_tag(:p, greeting, class: "source-greeting")
     end
   end
+
+  def copyright_generator
+    LubamayViewTool::Renderer.copyright 'Luba May', 'All rights reserved'
+  end
 end
 
 
